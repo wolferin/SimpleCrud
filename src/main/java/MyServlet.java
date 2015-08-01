@@ -51,7 +51,7 @@ public class MyServlet extends HttpServlet {
         int userId = Integer.parseInt(request.getParameter("id"));
         userDAO.delete(userId);
         request.setAttribute("users", userDAO.allUser());
-        request.getRequestDispatcher(getServletContext().getInitParameter("jspDir") + "/listUser.jsp")
+        request.getRequestDispatcher(getServletContext().getInitParameter("jspDir") + LIST_USER)
                                                                             .forward(request, response);
 
     }
@@ -59,7 +59,7 @@ public class MyServlet extends HttpServlet {
     protected void listUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         request.setAttribute("users", userDAO.allUser());
-        request.getRequestDispatcher(getServletContext().getInitParameter("jspDir") + "/listUser.jsp")
+        request.getRequestDispatcher(getServletContext().getInitParameter("jspDir") + LIST_USER)
                                                                             .forward(request, response);
 
 
@@ -70,7 +70,7 @@ public class MyServlet extends HttpServlet {
         int userId = Integer.parseInt(request.getParameter("id"));
         User user = userDAO.getUserById(userId);
         request.setAttribute("users", user);
-        request.getRequestDispatcher(getServletContext().getInitParameter("jspDir") + "/userADD.jsp")
+        request.getRequestDispatcher(getServletContext().getInitParameter("jspDir") + ADD_OR_EDIT)
                                                                             .forward(request, response);
 
 
@@ -78,7 +78,7 @@ public class MyServlet extends HttpServlet {
 
     protected void addUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        request.getRequestDispatcher(getServletContext().getInitParameter("jspDir") + "/userADD.jsp")
+        request.getRequestDispatcher(getServletContext().getInitParameter("jspDir") + ADD_OR_EDIT)
                                                                             .forward(request, response);
 
     }
@@ -105,7 +105,7 @@ public class MyServlet extends HttpServlet {
         }request.setAttribute("users", userDAO.allUser());
 
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(getServletContext().getInitParameter("jspDir")
-                                                                                                    + "/listUser.jsp");
+                                                                                                    + LIST_USER);
         request.setAttribute("users", userDAO.allUser());
         requestDispatcher.forward(request, response);
 
